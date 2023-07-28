@@ -39,31 +39,6 @@ async function askName() {
     playerName = answers.player_name;
 }
 
-async function handleAnswer(isCorrect) {
-    const spinner = createSpinner('Checking answer. . . ').start();
-    await sleep();
-
-    if (isCorrect) {
-        spinner.success({ text: `Nice work ${playerName}. That's a legit answer` });
-    } else {
-        spinner.error({ text: `Game over, you lose ${playerName}!` });
-        process.exit(1);
-    }
-}
-
-function Winner() {
-    console.clear();
-    figlet(`Congrats, ${playerName}!\n $ 1 , 0 0 0 , 0 0 0`, (err, data) => {
-        console.log(gradient.pastel.multiline(data) + '\n');
-
-        console.log(
-            chalk.green(
-                `Programming isn't about what you know; it's about making the command line look cool`
-            )
-        );
-    });
-}
-
 async function question1() {
     const answers = await inquirer.prompt({
         name: 'question_1',
@@ -129,6 +104,31 @@ async function question5() {
     });
 
     return handleAnswer(answers.question_5 === 'non-blocking');
+}
+
+async function handleAnswer(isCorrect) {
+    const spinner = createSpinner('Checking answer. . . ').start();
+    await sleep();
+
+    if (isCorrect) {
+        spinner.success({ text: `Nice work ${playerName}. That's a legit answer` });
+    } else {
+        spinner.error({ text: `Game over, you lose ${playerName}!` });
+        process.exit(1);
+    }
+}
+
+function Winner() {
+    console.clear();
+    figlet(`Congrats, ${playerName}!\n $ 1 , 0 0 0 , 0 0 0`, (err, data) => {
+        console.log(gradient.pastel.multiline(data) + '\n');
+
+        console.log(
+            chalk.green(
+                `Programming isn't about what you know; it's about making the command line look cool`
+            )
+        );
+    });
 }
 
 console.clear();
