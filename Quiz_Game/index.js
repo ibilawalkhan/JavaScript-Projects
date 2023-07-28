@@ -118,18 +118,7 @@ async function handleAnswer(isCorrect) {
     }
 }
 
-function Winner() {
-    console.clear();
-    figlet(`Congrats, ${playerName}!\n $ 1 , 0 0 0 , 0 0 0`, (err, data) => {
-        console.log(gradient.pastel.multiline(data) + '\n');
-
-        console.log(
-            chalk.green(
-                `Programming isn't about what you know; it's about making the command line look cool`
-            )
-        );
-    });
-}
+c
 
 console.clear();
 await Welcome();
